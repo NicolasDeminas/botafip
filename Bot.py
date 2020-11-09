@@ -6,7 +6,7 @@ import Secret
 class BotAfip:
         
     def __init__(self,username,pw,fecha):
-        path = "C:\Program Files (x86)/chromedriver.exe"
+        path = "C:/Program Files (x86)/chromedriver.exe"
         self.driver = webdriver.Chrome(path)
         # Ingreso a web AFIP
         self.driver.get("http://www.afip.gov.ar/sitio/externos/default.asp")
