@@ -25,6 +25,9 @@ class Afip:
     
     def comprobantes_recibidos(self):
         self.driver.find_element_by_xpath(paths.comprobantes_recibidos).click()
+
+    def comprobantes_emitidos(self):
+        self.driver.find_element_by_xpath(paths.comprobantes_emitidos).click()
     
     def seleccionar_comprobantes(self, fecha):
         self.driver.find_element_by_xpath(paths.definir_fecha).clear()
@@ -49,8 +52,17 @@ class Afip:
         self.descargar_csv()
         self.cerrar()
 
-    def __init__(self, username, password, boton_mis_comprobantes):
-        self.descargar_comprobantes_recibidos(username, password, boton_mis_comprobantes)
+    def descargar_comprobantes_emitidos(self, username, password, boton_mis_comprobantes):
+        self.Inicio()
+        self.login(username, password)
+        self.menu_mis_comprobantes(boton_mis_comprobantes)
+        self.comprobantes_emitidos()
+        self.seleccionar_comprobantes(paths.fecha)
+        self.descargar_csv()
+        self.cerrar()
+
+    # def __init__(self, username, password, boton_mis_comprobantes):
+    #     self.descargar_comprobantes_recibidos(username, password, boton_mis_comprobantes)
 
 
 
