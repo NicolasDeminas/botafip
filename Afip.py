@@ -2,11 +2,11 @@ from selenium import webdriver
 from time import sleep
 import paths
 
-path = "C:/Program Files (x86)/chromedriver.exe"
+
 
 class Afip:
     def Inicio(self):
-        self.driver = webdriver.Chrome(path)
+        self.driver = webdriver.Chrome(paths.path)
         self.driver.implicitly_wait(10)
         self.driver.get("https://auth.afip.gob.ar/contribuyente_/login.xhtml")
     
