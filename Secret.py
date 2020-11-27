@@ -11,3 +11,6 @@ password_food = os.environ['afip_password_food']
 
 username_anser = os.environ['afip_username_anser']
 password_anser = os.environ['afip_password_anser']
+
+galicia_username_food = os.environ['galicia_username_food']
+galicia_password_food = os.environ['galicia_password_food']
