@@ -1,7 +1,8 @@
 from selenium import webdriver
 from time import sleep
-import paths
-
+import paths.paths as paths
+from Secret import username_food, username_anser, password_food, password_anser
+from ordenar_archivos import *
 
 
 class Afip:
@@ -61,8 +62,21 @@ class Afip:
         self.descargar_csv()
         self.cerrar()
 
-    # def __init__(self, username, password, boton_mis_comprobantes):
-    #     self.descargar_comprobantes_recibidos(username, password, boton_mis_comprobantes)
+bot = Afip()
+def comprobantesRecibidosFood():
+    bot.descargar_comprobantes_recibidos(username_food, password_food, paths.boton_mis_comprobantes_food)
+    ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_recibidos_base, carpeta_comprobantes_recibidos)
 
+def comprobantesEmitidosFood():
+    bot.descargar_comprobantes_emitidos(username_food, password_food, paths.boton_mis_comprobantes_food)
+    ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_emitidos_base, carpeta_comprobantes_emitidos)
 
+def comprobantesRecibidosAnser():
+    bot.descargar_comprobantes_recibidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser)
+    ordenar_archivos(carpeta_a_ordenar, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
 
+def comprobantesEmitidosAnser():
+    bot.descargar_comprobantes_emitidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser)
+    ordenar_archivos(carpeta_a_ordenar, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
+
+    

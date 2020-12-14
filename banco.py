@@ -1,15 +1,16 @@
 from selenium import webdriver
-import paths
+import paths.paths as paths
+import paths.bancos as bancos
 import Secret
 
 
 class Banco:
-    def Inicio(self):
+    def Inicio(self, bco):
         self.driver = webdriver.Chrome(paths.path)
         self.driver.implicitly_wait(10)
-        self.driver.get(paths.galicia)
+        self.driver.get(bco)
 
-    def login(self, username, password):
+    def login(self, username, password):    
         self.driver.find_element_by_class_name('office_banking').click()
         self.driver.find_element_by_id('UserID').send_keys(username)
         self.driver.find_element_by_id('password').send_keys(password)
@@ -25,8 +26,8 @@ class Banco:
         self.driver.find_element_by_id('expoOnline').click()
         self.driver.find_element_by_class_name('csv').click()
 
-    def ingresarGalicia(self, username, password, fecha_desde, fecha_hasta):
-        self.Inicio()
+    def ingresarGalicia(self,bco, username, password, fecha_desde, fecha_hasta):
+        self.Inicio(bco)
         self.login(username, password)
         self.buscar_mes(fecha_desde, fecha_hasta)
 
@@ -34,5 +35,5 @@ class Banco:
 fechas = paths.fechas_mes()
 
 galicia = Banco()
-galicia.ingresarGalicia(Secret.galicia_username_food, Secret.galicia_password_food, fechas[0], fechas[1])
+galicia.ingresarGalicia(bancos.galicia, Secret.galicia_username_food, Secret.galicia_password_food, fechas[0], fechas[1])
 
