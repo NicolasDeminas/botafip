@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Tk, mainloop, COMMAND, Button
 from Afip import comprobantesRecibidosFood, comprobantesEmitidosFood, comprobantesRecibidosAnser,comprobantesEmitidosAnser
 
 root = Tk()

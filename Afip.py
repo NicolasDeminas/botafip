@@ -65,18 +65,18 @@ class Afip:
 bot = Afip()
 def comprobantesRecibidosFood():
     bot.descargar_comprobantes_recibidos(username_food, password_food, paths.boton_mis_comprobantes_food)
-    ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_recibidos_base, carpeta_comprobantes_recibidos)
+    ordenar_archivos(carpeta_downloads, mis_comprobantes_recibidos_food, carpeta_comprobantes_recibidos)
 
 def comprobantesEmitidosFood():
     bot.descargar_comprobantes_emitidos(username_food, password_food, paths.boton_mis_comprobantes_food)
-    ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_emitidos_base, carpeta_comprobantes_emitidos)
+    ordenar_archivos(carpeta_downloads, mis_comprobantes_emitidos_food, carpeta_comprobantes_emitidos)
 
 def comprobantesRecibidosAnser():
     bot.descargar_comprobantes_recibidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser)
-    ordenar_archivos(carpeta_a_ordenar, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
+    ordenar_archivos(carpeta_downloads, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
 
 def comprobantesEmitidosAnser():
     bot.descargar_comprobantes_emitidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser)
-    ordenar_archivos(carpeta_a_ordenar, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
+    ordenar_archivos(carpeta_downloads, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
 
     
