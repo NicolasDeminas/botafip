@@ -24,6 +24,9 @@ class Afip:
         self.driver.switch_to.window(self.driver.window_handles[1])
         sleep(1)
     
+    def seleccionar_empresa(self):
+        self.driver.find_element_by_xpath(paths.empresa).click()
+    
     def comprobantes_recibidos(self):
         self.driver.find_element_by_xpath(paths.comprobantes_recibidos).click()
 
@@ -44,10 +47,16 @@ class Afip:
         sleep(2)
         self.driver.quit()
     
-    def descargar_comprobantes_recibidos(self, username, password, boton_mis_comprobantes):
+    def descargar_comprobantes_recibidos(self, username, password, boton_mis_comprobantes, empresa):
         self.Inicio()
         self.login(username, password)
         self.menu_mis_comprobantes(boton_mis_comprobantes)
+        try:
+            self.seleccionar_empresa()
+        except Exception as e:
+            if e is None:
+                pass
+
         self.comprobantes_recibidos()
         self.seleccionar_comprobantes(paths.fecha)
         self.descargar_csv()
@@ -64,7 +73,7 @@ class Afip:
 
 bot = Afip()
 def comprobantesRecibidosFood():
-    bot.descargar_comprobantes_recibidos(username_food, password_food, paths.boton_mis_comprobantes_food)
+    bot.descargar_comprobantes_recibidos(username_food, password_food, paths.boton_mis_comprobantes_food, paths.empresa)
     ordenar_archivos(carpeta_downloads, mis_comprobantes_recibidos_food, carpeta_comprobantes_recibidos)
 
 def comprobantesEmitidosFood():
@@ -72,7 +81,7 @@ def comprobantesEmitidosFood():
     ordenar_archivos(carpeta_downloads, mis_comprobantes_emitidos_food, carpeta_comprobantes_emitidos)
 
 def comprobantesRecibidosAnser():
-    bot.descargar_comprobantes_recibidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser)
+    bot.descargar_comprobantes_recibidos(username_anser, password_anser, paths.boton_mis_comprobantes_anser, paths.empresa)
     ordenar_archivos(carpeta_downloads, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
 
 def comprobantesEmitidosAnser():

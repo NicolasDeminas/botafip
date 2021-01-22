@@ -12,7 +12,7 @@ definir_fecha = "/html/body/main/div/section/div/div/div[1]/div/div[1]/div/div/i
 boton_aceptar_fecha = "/html/body/div/div[3]/div/button[1]"
 boton_buscar_comprobantes = "buscarComprobantes"
 descargar_csv = "/html/body/main/div/section/div/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/button[1]"
-
+empresa = "/html/body/form/main/div/div/div[2]/div/div/div/a"
 
 
 from datetime import date, timedelta
