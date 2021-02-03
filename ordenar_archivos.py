@@ -28,12 +28,6 @@ def ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_base, carpeta_destino):
             comprobante = mis_comprobantes_base + ' - ' + str(fecha) + '.csv'
             shutil.move(carpeta_a_ordenar + archivo.name, carpeta_destino + comprobante)
 
-ordenar_archivos(carpeta_downloads, mis_comprobantes_recibidos_food, carpeta_comprobantes_recibidos)
-ordenar_archivos(carpeta_downloads,mis_comprobantes_emitidos_food, carpeta_comprobantes_emitidos)
-ordenar_archivos(carpeta_downloads, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
-ordenar_archivos(carpeta_downloads, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
-
-
 def ordenarVarios(carpeta_a_ordenar, tipoArchivo, carpetaDestino):
     directorio = pathlib.Path(carpeta_a_ordenar)
     for archivo in directorio.iterdir():
@@ -45,5 +39,11 @@ def ordenarVarios(carpeta_a_ordenar, tipoArchivo, carpetaDestino):
             comprobante = str(fecha) + ' - ' + archivo.name
             shutil.move(carpeta_a_ordenar + archivo.name, carpetaDestino + comprobante )
         
-ordenarVarios(carpeta_downloads, archivos_acreditaciones, carpeta_acreditaciones)
-ordenarVarios(carpeta_downloads, pdfs, carpeta_pdfs)
+
+def ordenarTodo():
+    ordenarVarios(carpeta_downloads, archivos_acreditaciones, carpeta_acreditaciones)
+    ordenarVarios(carpeta_downloads, pdfs, carpeta_pdfs)
+    ordenar_archivos(carpeta_downloads, mis_comprobantes_recibidos_food, carpeta_comprobantes_recibidos)
+    ordenar_archivos(carpeta_downloads,mis_comprobantes_emitidos_food, carpeta_comprobantes_emitidos)
+    ordenar_archivos(carpeta_downloads, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
+    ordenar_archivos(carpeta_downloads, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
