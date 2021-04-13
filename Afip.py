@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 import paths.paths as paths
 
@@ -6,7 +7,7 @@ import paths.paths as paths
 class Afip:
     def Inicio(self):
         self.driver = webdriver.Chrome(paths.path)
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(20)
         self.driver.get("https://auth.afip.gob.ar/contribuyente_/login.xhtml")
     
 
@@ -27,9 +28,10 @@ class Afip:
                     break
             except Exception:
                 break
-        sleep(1)
+        sleep(10)
         self.driver.switch_to.window(self.driver.window_handles[1])
         
+
     def cerrar(self):
         sleep(2)
         self.driver.quit()

@@ -17,7 +17,7 @@ class misComprobantes:
                 if r.find(empresa) >= 0:
                     representar.click()
                     break
-            except Exception as e:
+            except Exception:
                 break
 
     def comprobantes(self, tipoComprobante):

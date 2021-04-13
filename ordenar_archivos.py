@@ -47,3 +47,5 @@ def ordenarTodo():
     ordenar_archivos(carpeta_downloads,mis_comprobantes_emitidos_food, carpeta_comprobantes_emitidos)
     ordenar_archivos(carpeta_downloads, comprobantes_recibidos_anser, carpeta_comprobantes_recibidos_anser)
     ordenar_archivos(carpeta_downloads, comprobantes_emitidos_anser, carpeta_comprobantes_emitidos_anser)
+
+ordenarTodo()
