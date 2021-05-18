@@ -3,27 +3,27 @@ from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 import paths.paths as paths
 
-
+#Clase para inicializar el ingreso en pagina de AFIP
 class Afip:
     def Inicio(self):
         self.driver = webdriver.Chrome(paths.path)
         self.driver.implicitly_wait(20)
         self.driver.get("https://auth.afip.gob.ar/contribuyente_/login.xhtml")
     
-
+    #Las referencias estan en el archivo paths, y en Secret los datos de ingreso 
     def login(self, username, password):
         self.driver.find_element_by_name(paths.ingresar_usuario).send_keys(username)
         self.driver.find_element_by_name(paths.ingresar_usuario_boton).click()
         self.driver.find_element_by_name(paths.ingresar_contraseña).send_keys(password)
         self.driver.find_element_by_name(paths.ingresar_contraseña_boton).click()
-   
+
+    #Hace un loop for para encontrar el nombre del Menu dentro de la pagina de AFIP, dicho nombre se tiene que pasar
+    #como parametro desde la clase que lo inicialice
     def buscarMenu(self, menu):
         for n in range(1, 200):
             try:
                 boton = self.driver.find_element_by_xpath("/html/body/main/section[2]/div/div[" + str(n) + "]/div/div/div/div[2]/h4")
-                #print(boton.text)
                 if boton.text == menu:
-                    #print(boton.text)
                     boton.click()
                     break
             except Exception:

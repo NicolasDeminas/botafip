@@ -3,12 +3,17 @@ from time import sleep
 from Afip import Afip
 import paths.paths as paths
 
-
+# La clase se ocupa de manejar tanto el ingreso al menu de Mis Comprobantes, como de definir las fechas buscadas y la descarga
+#del archivo CSV
 class misComprobantes:
     def Iniciar(self):
         self.driver = webdriver.Chrome(paths.path)
         self.driver.implicitly_wait(10)
-        
+    
+    #La función se ejecuta siempre, aunque su resultado es opcional, dependiendo si el usuario tiene asignado el menu para 
+    #mas de una empresa
+    #La logica es similar a la de la busqueda del menu, haciendo un loop for buscando el nombre de la empresa, el cual debe
+    #ser pasado como parametro al instancear el objeto
     def empresa(self, empresa):
         for n in range(1, 10):
             try:
