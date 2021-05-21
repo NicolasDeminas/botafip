@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import libroSueldosDigital
 import Secret
+from ordenar_archivos import ordenarArchivosSueldos, carpeta_txt_sueldos_food, carpeta_downloads, agrupar, carpeta_txt_sueldos_anser
 
 libroSueldosDigital.LibroSueldos = libroSueldosDigital.LibroSueldos()
 
@@ -11,7 +12,11 @@ def ventanaPeriodoFood():
 
     def libroSueldosFood():
         periodo = mes.get() + "/" + año.get()
-        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameFood, Secret.passwordFood, periodo)
+        periodo_ordenar = año.get() + mes.get()
+        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameFood, Secret.passwordFood, periodo, "30-69832233-7 FOOD CORNER S A")
+        ordenarArchivosSueldos(carpeta_downloads, periodo_ordenar, carpeta_txt_sueldos_food)
+        agrupar(carpeta_txt_sueldos_food, periodo_ordenar)
+
 
     ventana = Tk()
     ventana.title("lista desplegable")
@@ -37,7 +42,10 @@ def ventanaPeriodoAnser():
 
     def libroSueldosAnser():
         periodo = mes.get() + "/" + año.get()
-        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameAnser, Secret.passwordAnser, periodo)
+        periodo_ordenar = año.get() + mes.get()
+        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameAnser, Secret.passwordAnser, periodo, "ANSER")
+        ordenarArchivosSueldos(carpeta_downloads, periodo_ordenar, carpeta_txt_sueldos_anser)
+        agrupar(carpeta_txt_sueldos_anser, periodo_ordenar)
 
     ventana = Tk()
     ventana.title("lista desplegable")

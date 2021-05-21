@@ -14,7 +14,8 @@ archivos_acreditaciones = 'Acreditaciones_GO_30698322337'
 carpeta_acreditaciones = carpeta_downloads + '/Archivos acreditaciones sueldos/'
 pdfs = '.pdf'
 carpeta_pdfs = carpeta_downloads + '/Pdfs/'
-
+carpeta_txt_sueldos_food = carpeta_downloads + 'TXTs Sueldos/Libro Sueldos Digital/'
+carpeta_txt_sueldos_anser = carpeta_downloads + 'TXTs Sueldos Anser/Libro de sueldos digital/'
 
 
 def ordenar_archivos(carpeta_a_ordenar, mis_comprobantes_base, carpeta_destino):
@@ -38,7 +39,32 @@ def ordenarVarios(carpeta_a_ordenar, tipoArchivo, carpetaDestino):
             fecha = (datetime.datetime.strftime(fecha, '%Y-%m-%d-%H%M%S'))
             comprobante = str(fecha) + ' - ' + archivo.name
             shutil.move(carpeta_a_ordenar + archivo.name, carpetaDestino + comprobante )
+
+def ordenarArchivosSueldos(carpeta_a_ordenar, periodo, carpetaDestino):
+    directorio = pathlib.Path(carpeta_a_ordenar)
+    for archivo in directorio.iterdir():
+        a = archivo.name.find("Liquidacion_")
+        if a >= 0:
+            liquidacion = periodo + '-' + archivo.name
+            shutil.move(carpeta_a_ordenar + archivo.name, carpetaDestino + liquidacion)
         
+def agrupar(carpeta, periodo):
+    directorio = pathlib.Path(carpeta)
+    with open(carpeta + '/' + periodo + ' - Agrupado.csv', 'w') as f:
+        for archivo in directorio.iterdir():
+            a = archivo.name.find(periodo)
+            if a >= 0:
+                with open(archivo, 'r') as archivo_sueldos:
+                    for linea in archivo_sueldos:
+                        #print(linea)
+                        pos = linea.find('03')
+                        #print(pos)
+                        if pos == 0:
+                            print(linea, file=f)
+
+
+
+
 
 def ordenarTodo():
     ordenarVarios(carpeta_downloads, archivos_acreditaciones, carpeta_acreditaciones)
