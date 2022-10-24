@@ -29,12 +29,12 @@ class LibroSueldos:
 
     def periodo(self, periodo):
         self.driver.find_element_by_id("ctl00_ContentPlaceHolder1_InputPeriodo1_txtPeriodo").send_keys(periodo)
-        self.driver.find_element_by_xpath("/html/body/form/div[3]/div[6]/div[3]/div[2]/input").click()
+        self.driver.find_element_by_xpath("/html/body/form/div[3]/div[6]/div[4]/div[2]/input").click()
 
     def descargarArchivos(self):
             for c in range(2, 20):
                 try:
-                    liquidacion = self.driver.find_element_by_xpath("/html/body/form/div[3]/div[6]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[" + str(c) + "]/td[5]/input")
+                    liquidacion = self.driver.find_element_by_xpath("/html/body/form/div[3]/div[6]/div[4]/table/tbody/tr[2]/td/table/tbody/tr[" + str(c) + "]/td[5]/input")                                    
                     liquidacion.click()
                 except Exception:
                     break
@@ -43,6 +43,7 @@ class LibroSueldos:
     def libroSueldosDigital(self, username, password, periodo, empresa):
         Afip.Inicio(self)
         Afip.login(self, username, password)
+        Afip.changeMenu(self)
         Afip.buscarMenu(self, "Libro de Sueldos Digital")
         self.menuConsultas(empresa)
         self.periodo(periodo)

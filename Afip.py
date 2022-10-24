@@ -17,16 +17,23 @@ class Afip:
         self.driver.find_element_by_name(paths.ingresar_contraseña).send_keys(password)
         self.driver.find_element_by_name(paths.ingresar_contraseña_boton).click()
 
+    def changeMenu(self):
+        self.driver.find_element_by_xpath('/html/body/div/div/main/section[1]/div/ul/li[3]/a').click()
+        sleep(2)
+
     #Hace un loop for para encontrar el nombre del Menu dentro de la pagina de AFIP, dicho nombre se tiene que pasar
     #como parametro desde la clase que lo inicialice
     def buscarMenu(self, menu):
+        
         for n in range(1, 200):
             try:
-                boton = self.driver.find_element_by_xpath("/html/body/main/section[2]/div/div[" + str(n) + "]/div/div/div/div[2]/h4")
+                boton = self.driver.find_element_by_xpath(f"/html/body/div/div/main/div[2]/section[2]/div/div/div[{str(n)}]/div/div/div/div[2]/h4")
+                
                 if boton.text == menu:
                     boton.click()
                     break
-            except Exception:
+            except Exception as e:
+                print(e)
                 break
         sleep(10)
         self.driver.switch_to.window(self.driver.window_handles[1])

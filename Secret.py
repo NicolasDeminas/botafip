@@ -16,3 +16,7 @@ cuitAnser = '30689189233'
 
 galicia_username_food = os.environ['galicia_username_food']
 galicia_password_food = os.environ['galicia_password_food']
+
+usernameSanpina = os.environ['afip_username_sanpina']
+passwordSanpina = os.environ['afip_password_sanpina']
+cuitSanpina = '30717641449'
