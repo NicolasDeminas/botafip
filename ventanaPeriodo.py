@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import libroSueldosDigital
 import Secret
-from ordenar_archivos import ordenarArchivosSueldos, carpeta_txt_sueldos_food, carpeta_downloads, agrupar, carpeta_txt_sueldos_anser
+from ordenar_archivos import ordenarArchivosSueldos, carpeta_txt_sueldos_food, carpeta_downloads, agrupar, carpeta_txt_sueldos_anser, carpeta_txt_sueldos_sanpina
 
 libroSueldosDigital.LibroSueldos = libroSueldosDigital.LibroSueldos()
 
@@ -13,7 +13,7 @@ def ventanaPeriodoFood():
     def libroSueldosFood():
         periodo = mes.get() + "/" + año.get()
         periodo_ordenar = año.get() + mes.get()
-        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameFood, Secret.passwordFood, periodo, "30-69832233-7 FOOD CORNER S A")
+        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameFood, Secret.passwordFood, periodo, "30-69832233-7 - FOOD CORNER S A")
         ordenarArchivosSueldos(carpeta_downloads, periodo_ordenar, carpeta_txt_sueldos_food)
         agrupar(carpeta_txt_sueldos_food, periodo_ordenar)
 
@@ -70,7 +70,7 @@ def ventanaPeriodoSanpina():
     def libroSueldosSanpina():
         periodo = mes.get() + "/" + año.get()
         periodo_ordenar = año.get() + mes.get()
-        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameSanpina, Secret.passwordSanpina, periodo, "30-71764144-9 SANPINA S A")
+        libroSueldosDigital.LibroSueldos.libroSueldosDigital(Secret.usernameSanpina, Secret.passwordSanpina, periodo, "30-71764144-9 - SANPINA S. A")
         ordenarArchivosSueldos(carpeta_downloads, periodo_ordenar, carpeta_txt_sueldos_sanpina)
         agrupar(carpeta_txt_sueldos_sanpina, periodo_ordenar)
 

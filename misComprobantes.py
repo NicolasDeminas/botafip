@@ -20,6 +20,7 @@ class misComprobantes:
                 representar = self.driver.find_element_by_xpath("/html/body/form/main/div/div/div[2]/div/div[" + str(n) + "]/div/a")
                 r = representar.text
                 if r.find(empresa.upper()) >= 0:
+                    self.driver.execute_script('arguments[0].scrollIntoView(true)', representar)
                     representar.click()
                     break
             except Exception:
@@ -38,11 +39,13 @@ class misComprobantes:
         self.driver.find_element_by_xpath(paths.definir_fecha).clear()
         self.driver.find_element_by_xpath(paths.definir_fecha).send_keys(fecha)
         self.driver.find_element_by_xpath(paths.boton_aceptar_fecha).click()
+        self.driver.execute_script('arguments[0].scrollIntoView(true)', self.driver.find_element_by_id(paths.boton_buscar_comprobantes))
         self.driver.find_element_by_id(paths.boton_buscar_comprobantes).click()
         
     def descargarCSV(self):
         sleep(20)
         self.driver.find_element_by_xpath(paths.descargar_csv).click()
+
 
     def descargarComprobantes(self, username, password, empresa, tipoComprobante, dias):
         Afip.Inicio(self)

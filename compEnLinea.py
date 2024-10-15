@@ -16,6 +16,30 @@ class CompEnLinea:
                 empr.click()
                 break
 
+    def generarComprobantes(self, puntoDeVenta, tipoComprobante):
+        self.driver.find_element_by_id("btn_gen_cmp").click()
+        for puntoVenta in range(1,5):
+            punto = self.driver.find_element_by_xpath("/html/body/div[2]/form/div/div/table/tbody/tr[1]/td/select/option["+str(puntoVenta) +"]")
+            pto = punto.get_attribute("value")
+            if pto.find(puntoDeVenta) >= 0:
+                punto.click()
+                break
+        
+        if tipoComprobante == "10":
+            tipo = self.driver.find_element_by_xpath("/html/body/div[2]/form/div/div/table/tbody/tr[3]/td/div/select/option[1]").click()
+        else:
+            for tipoComp in range(1, 20):
+                tipo = self.driver.find_element_by_xpath("/html/body/div[2]/form/div/div/table/tbody/tr[3]/td/div/select/option["+str(tipoComp) +"]")
+                t = tipo.get_attribute("value")
+                if t.find(tipoComprobante) >= 0:
+                    tipo.click()
+                    break
+
+        self.driver.find_element_by_xpath("/html/body/div[2]/form/input[2]").click()
+
+    
+    
+
     def consultas(self):
         self.driver.find_element_by_id("btn_consultas").click()
         sleep(3)
@@ -43,5 +67,14 @@ class CompEnLinea:
         self.exportarVentas()
         Afip.cerrar(self)
 
+    def generarComprobante(self, username, password):
+        Afip.Inicio(self)
+        Afip.login(self, username, password)
+        Afip.buscarMenu(self, "Comprobantes en línea")
+        self.empresa("FOOD CORNER")
+        self.generarComprobantes("101", "10")
+
+
+
 compEnLinea = CompEnLinea()
-compEnLinea.descargarVentas("20184719968", "887Estudio")
+compEnLinea.generarComprobante("20184719968", "EStudio887")

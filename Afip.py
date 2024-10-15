@@ -16,9 +16,18 @@ class Afip:
         self.driver.find_element_by_name(paths.ingresar_usuario_boton).click()
         self.driver.find_element_by_name(paths.ingresar_contraseña).send_keys(password)
         self.driver.find_element_by_name(paths.ingresar_contraseña_boton).click()
+        # self.driver.execute_script('window.localStorage.setItem("AFIPCOMUNICACIONENG", "true")')
 
     def changeMenu(self):
-        self.driver.find_element_by_xpath('/html/body/div/div/main/section[1]/div/ul/li[3]/a').click()
+        # self.driver.find_element_by_xpath('/html/body/div/div/main/section[1]/div/ul/li[3]/a').click()
+        # try:
+        #     self.driver.find_element_by_xpath('/html/body/div[2]/div[2]/div/div/div[3]/div/button[1]').click()
+        # except Exception as e:
+        #     print(e)
+            
+        menu = self.driver.find_element_by_xpath('/html/body/div/div/main/section[1]/div/div/div/div[5]/div/a')
+        self.driver.execute_script('arguments[0].scrollIntoView(true)', menu)
+        menu.click()
         sleep(2)
 
     #Hace un loop for para encontrar el nombre del Menu dentro de la pagina de AFIP, dicho nombre se tiene que pasar
@@ -27,9 +36,14 @@ class Afip:
         
         for n in range(1, 200):
             try:
-                boton = self.driver.find_element_by_xpath(f"/html/body/div/div/main/div[2]/section[2]/div/div/div[{str(n)}]/div/div/div/div[2]/h4")
+                # boton = self.driver.find_element_by_xpath(f"/html/body/div/div/main/div[2]/section[2]/div/div/div[{str(n)}]/div/div/div/div[2]/h4")
+                boton = self.driver.find_element_by_xpath(f"/html/body/div/div/main/div/section/div/div[3]/div[{str(n)}]/a/div/div/h3")
+                # boton = self.driver.find_element_by_xpath(f"/html/body/div/div/main/div/section/div/div[3]/div[44]/a")
                 
-                if boton.text == menu:
+
+                if boton.text == menu.upper():
+                    self.driver.execute_script('arguments[0].scrollIntoView(true)', boton)
+                    sleep(1)
                     boton.click()
                     break
             except Exception as e:
