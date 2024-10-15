@@ -1,7 +1,7 @@
 import os,datetime, time, pathlib
 import shutil
 
-carpeta_downloads = 'c:/Users/Nicolas/Downloads/'
+carpeta_downloads = 'C:/Users/nico_/Downloads/'
 mis_comprobantes_recibidos_food='Mis Comprobantes Recibidos - CUIT 30698322337'
 carpeta_comprobantes_recibidos = carpeta_downloads + '/Comprobantes recibidos/'
 mis_comprobantes_emitidos_food='Mis Comprobantes Emitidos - CUIT 30698322337'
@@ -89,4 +89,4 @@ def ordenarTodo():
     ordenarVarios(carpeta_downloads, jpeg, carpeta_jpeg)
 
 
-#ordenarTodo()
+# ordenarTodo()

@@ -1,4 +1,4 @@
-path = "C:/Users/Nicolas/Google Drive/Python/BotAfip/chromedriver.exe"
+path = "C:/Users/nico_/Documents/GitHub/botafip/chromedriver.exe"
 
 ingresar_usuario = "F1:username"
 ingresar_usuario_boton = "F1:btnSiguiente"
